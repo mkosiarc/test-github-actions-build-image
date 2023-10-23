@@ -4,9 +4,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - syft.Dockerfile
+    
   pull_request:
     branches:
       - main
+    paths:
+      - syft.Dockerfile
+
 
 env:
   REGISTRY: quay.io/mkosiarc_rhtap
