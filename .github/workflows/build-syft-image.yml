@@ -26,3 +26,4 @@ jobs:
       with:
         image: ${{ env.IMAGE_NAME }}
         context: .
+        dockerfile: syft.Dockerfile
