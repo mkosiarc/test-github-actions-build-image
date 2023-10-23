@@ -20,11 +20,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Extract version from Dockerfile
+      run: |
+        export VERSION=$(grep -oP '(?<=ARG syft_version=")[^"]*' syft.Dockerfile)
+
     - name: Build Image
       id: build-image
       uses: redhat-actions/buildah-build@v2
       with:
         image: ${{ env.IMAGE_NAME }}
+        tags: ${{ env.VERSION }}
         context: .
         containerfiles: |
             ./syft.Dockerfile
